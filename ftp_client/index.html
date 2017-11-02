@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+var socket = io.connect();
+var res=document.getElementById('res');
+function getIP() {
+    socket.emit("servip",document.getElementById('serv_ip').value);
+}
+function getPort() {
+    socket.emit("servport",document.getElementById('serv_port').value);
+}
+socket.on('result',function(data){
+   var li = document.createElement("li");
+   li.appendChild(document.createTextNode(data));
+  document.getElementById('res').appendChild(li);
+});
+
+function getFileName(){
+    socket.emit("filename",document.getElementById('file_name').value);
+}
+
+function getFileNameUp() {
+    socket.emit("upfilename",document.getElementById('upfile_name').value);
+}
+</script>
+
+</head>
+<body>
+Server IP: <input type="text" name="name" id="serv_ip" value="172.25.15.173" />
+<button onclick="getIP()">OK</button></br></br>
+
+Server Port: <input type="text" name="name" id="serv_port" value="8780" />
+<button onclick="getPort()">OK</button></br></br>
+
+<div id="result">
+    <ul id="res"></ul>
+</div>
+
+downloadFile: <input type="text" name="name" id="file_name" value="01413111.pdf" />
+<button onclick="getFileName()">OK</button></br></br>
+
+uploadFile: <input type="text" name="name" id="upfile_name" value="15000" />
+<button onclick="getFileNameUp()">OK</button></br>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+var socket = io.connect();
+function getPath() {
+    socket.emit("servpath",document.getElementById('uniqueID').value);
+}
+
+function getIP() {
+    socket.emit("servip",document.getElementById('serv_ip').value);
+}
+
+function getPort() {
+    socket.emit("servport",document.getElementById('serv_port').value);
+}
+</script>
+
+</head>
+<body>
+Path: <input type="text" name="name" id="uniqueID" value="/home/" />
+<button onclick="getPath()">OK</button></br></br>
+
+Server IP: <input type="text" name="name" id="serv_ip" value="172.25.15.173" />
+<button onclick="getIP()">OK</button></br></br>
+
+Server Port: <input type="text" name="name" id="serv_port" value="8780" />
+<button onclick="getPort()">OK</button></br></br>
+
+</body>
+</html>

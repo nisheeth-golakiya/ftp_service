@@ -1,0 +1,6 @@
+Requirements:
+    Node.js
+    npm
+    Python Libraries:
+        Pyftpdlib
+        Ftplib 
